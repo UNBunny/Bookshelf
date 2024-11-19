@@ -69,7 +69,7 @@ fun BookItem(book: Book, modifier: Modifier = Modifier) {
             val painter = rememberAsyncImagePainter(model = book.volumeInfo.imageLinks?.thumbnail)
             Image(
                 painter = painter,
-                contentDescription = book.title,
+                contentDescription = book.volumeInfo.title,
                 modifier = Modifier
                     .size(100.dp)
                     .padding(end = 8.dp),
@@ -77,7 +77,7 @@ fun BookItem(book: Book, modifier: Modifier = Modifier) {
             )
             Column {
                 Text(
-                    text = book.title,
+                    text = book.volumeInfo.title,
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
