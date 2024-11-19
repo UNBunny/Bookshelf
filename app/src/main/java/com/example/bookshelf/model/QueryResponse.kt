@@ -1,3 +1,9 @@
 package com.example.bookshelf.model
 
-//data class QueryResponse ()
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class QueryResponse(
+    val items: List<Book>?,
+    val totalItems: Int,
+)

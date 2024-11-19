@@ -57,19 +57,20 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
+    implementation("androidx.compose.runtime:runtime-livedata:1.7.5")
 
     // viewmodel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)// ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.livedata.ktx) // LiveData
     // retrofit
-    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+    implementation(libs.retrofit)
     // json file
     //implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1"
     implementation(libs.converter.gson)
     // images in json
     implementation("io.coil-kt:coil-compose:2.4.0")
-
     //Navigation
     implementation("androidx.navigation:navigation-compose:2.8.4")
 
