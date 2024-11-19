@@ -2,11 +2,12 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
 }
 
 android {
     namespace = "com.example.bookshelf"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.bookshelf"
@@ -56,4 +57,22 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
+    // viewmodel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+    // retrofit
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    // json file
+    //implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1"
+    implementation(libs.converter.gson)
+    // images in json
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+    //Navigation
+    implementation("androidx.navigation:navigation-compose:2.8.4")
+
+    implementation("androidx.compose.material:material-icons-extended:1.3.1")
+
 }
