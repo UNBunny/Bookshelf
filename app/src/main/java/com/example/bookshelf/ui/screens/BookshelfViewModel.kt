@@ -30,6 +30,11 @@ class BookshelfViewModel(private val bookshelfRepository: BookshelfRepository) :
     private val _uiStateBookshelf = MutableStateFlow<BookshelfUiState>(BookshelfUiState.Loading)
     val uiStateBookshelf = _uiStateBookshelf.asStateFlow()
 
+
+    init {
+        getBooks(uiStateBookshelf.value.query)
+    }
+
     fun getBooks(query: String = "") {
         viewModelScope.launch {
             _uiStateBookshelf.value = BookshelfUiState.Loading
@@ -42,13 +47,19 @@ class BookshelfViewModel(private val bookshelfRepository: BookshelfRepository) :
                 } else {
                     BookshelfUiState.Success(books)
                 }
-            }catch (e : IOException) {
+            } catch (e: IOException) {
+                e.printStackTrace() // Логирует ошибку в Logcat
                 BookshelfUiState.Error
-            }catch (e : HttpException) {
+            } catch (e: HttpException) {
+                e.printStackTrace() // Логирует ошибку в Logcat
+                BookshelfUiState.Error
+            } catch (e: Exception) {
+                e.printStackTrace() // Для отлова других исключений
                 BookshelfUiState.Error
             }
         }
     }
+
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {

@@ -11,14 +11,22 @@ class DefaultBookshelfRepository(private val googleBooksApi: GoogleBooksApi) : B
         return try {
             val res = googleBooksApi.getBooks(query)
             if (res.isSuccessful) {
-                res.body()?.items ?: emptyList()
+                val body = res.body()
+                if (body != null && !body.items.isNullOrEmpty()) {
+                    body.items
+                } else {
+                    emptyList() // Логируем, если items отсутствует
+                }
             } else {
-                emptyList()
+                // Логируем код ошибки
+                println("Error: ${res.code()} ${res.message()}")
+                null
             }
         } catch (e: Exception) {
             e.printStackTrace()
             null
         }
     }
+
 
 }
