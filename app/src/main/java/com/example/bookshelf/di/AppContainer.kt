@@ -3,7 +3,6 @@ package com.example.bookshelf.di
 import com.example.bookshelf.data.BookshelfRepository
 import com.example.bookshelf.data.DefaultBookshelfRepository
 import com.example.bookshelf.network.GoogleBooksApi
-import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
